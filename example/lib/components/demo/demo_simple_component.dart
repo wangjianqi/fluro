@@ -9,6 +9,7 @@
 import '../../helpers/color_helpers.dart';
 import 'package:flutter/material.dart';
 
+///push页面
 class DemoSimpleComponent extends StatelessWidget {
   DemoSimpleComponent(
       {String message = "Testing",
@@ -58,6 +59,7 @@ class DemoSimpleComponent extends StatelessWidget {
                   if (result == null) {
                     Navigator.pop(context);
                   } else {
+                    ///返回值
                     Navigator.pop(context, result);
                   }
                 },

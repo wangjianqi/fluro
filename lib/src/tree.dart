@@ -40,6 +40,7 @@ class RouteTreeNodeMatch {
   Map<String, List<String>> parameters = <String, List<String>>{};
 }
 
+///树节点
 class RouteTreeNode {
   // constructors
   RouteTreeNode(this.part, this.type);
@@ -78,6 +79,7 @@ class RouteTree {
       return;
     }
     if (path.startsWith("/")) {
+      ///
       path = path.substring(1);
     }
     List<String> pathComponents = path.split('/');

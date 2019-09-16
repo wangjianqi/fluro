@@ -30,6 +30,7 @@ var demoRouteHandler = Handler(
   return DemoSimpleComponent(message: message, color: color, result: result);
 });
 
+///弹出框
 var demoFunctionHandler = Handler(
     type: HandlerType.function,
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {

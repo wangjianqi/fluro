@@ -38,6 +38,7 @@ class Router {
     return _routeTree.matchRoute(path);
   }
 
+  ///返回
   bool pop(BuildContext context) => Navigator.pop(context);
 
   ///
@@ -80,7 +81,7 @@ class Router {
     return future;
   }
 
-  ///
+  ///未实现的路由
   Route<Null> _notFoundRoute(BuildContext context, String path) {
     RouteCreator<Null> creator =
         (RouteSettings routeSettings, Map<String, List<String>> parameters) {
@@ -93,12 +94,13 @@ class Router {
     return creator(RouteSettings(name: path), null);
   }
 
-  ///
+  ///匹配路由
   RouteMatch matchRoute(BuildContext buildContext, String path,
       {RouteSettings routeSettings,
       TransitionType transitionType,
       Duration transitionDuration = const Duration(milliseconds: 250),
       RouteTransitionsBuilder transitionsBuilder}) {
+    ///路由配置
     RouteSettings settingsToUse = routeSettings;
     if (routeSettings == null) {
       settingsToUse = RouteSettings(name: path);
@@ -124,9 +126,11 @@ class Router {
 
     RouteCreator creator =
         (RouteSettings routeSettings, Map<String, List<String>> parameters) {
+      ///系统
       bool isNativeTransition = (transition == TransitionType.native ||
           transition == TransitionType.nativeModal);
       if (isNativeTransition) {
+        ///iOS
         if (Platform.isIOS) {
           return CupertinoPageRoute<dynamic>(
               settings: routeSettings,
@@ -218,6 +222,7 @@ class Router {
   /// Route generation method. This function can be used as a way to create routes on-the-fly
   /// if any defined handler is found. It can also be used with the [MaterialApp.onGenerateRoute]
   /// property as callback to create routes that can be used with the [Navigator] class.
+  ///生成路由配置
   Route<dynamic> generator(RouteSettings routeSettings) {
     RouteMatch match =
         matchRoute(null, routeSettings.name, routeSettings: routeSettings);

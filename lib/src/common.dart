@@ -9,13 +9,13 @@
 
 import 'package:flutter/widgets.dart';
 
-///
+///回调类型
 enum HandlerType {
   route,
   function,
 }
 
-///
+///回调
 class Handler {
   Handler({this.type = HandlerType.route, this.handlerFunc});
   final HandlerType type;
@@ -38,6 +38,7 @@ class AppRoute {
   AppRoute(this.route, this.handler, {this.transitionType});
 }
 
+///过渡类型
 enum TransitionType {
   native,
   nativeModal,
@@ -52,6 +53,7 @@ enum TransitionType {
   cupertinoFullScreenDialog,
 }
 
+///路由匹配
 enum RouteMatchType {
   visual,
   nonVisual,
@@ -69,6 +71,7 @@ class RouteMatch {
   final String errorMessage;
 }
 
+///异常
 class RouteNotFoundException implements Exception {
   final String message;
   final String path;

@@ -8,6 +8,7 @@
  */
 import 'package:fluro/fluro.dart';
 
+///配置路由
 class Application {
   static Router router;
 }

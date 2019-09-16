@@ -198,6 +198,7 @@ class HomeComponentState extends State<HomeComponent> {
   }
 
   // actions
+  ///路由跳转
   void tappedMenuButton(BuildContext context, String key) {
     String message = "";
     String hexCode = "#FFFFFF";
@@ -209,15 +210,18 @@ class HomeComponentState extends State<HomeComponent> {
         message =
             "This screen should have appeared using the default flutter animation for the current OS";
       } else if (key == "preset-from-left") {
+        ///Left
         hexCode = "#5BF700";
         message =
             "This screen should have appeared with a slide in from left transition";
         transitionType = TransitionType.inFromLeft;
       } else if (key == "preset-fade") {
+        ///渐变
         hexCode = "#F700D2";
         message = "This screen should have appeared with a fade in transition";
         transitionType = TransitionType.fadeIn;
       } else if (key == "pop-result") {
+        ///有返回值
         transitionType = TransitionType.native;
         hexCode = "#7d41f4";
         message =
@@ -225,6 +229,7 @@ class HomeComponentState extends State<HomeComponent> {
         result = "Today is ${_daysOfWeek[DateTime.now().weekday - 1]}!";
       }
 
+      ///可以传参
       String route = "/demo?message=$message&color_hex=$hexCode";
 
       if (result != null) {
@@ -234,6 +239,7 @@ class HomeComponentState extends State<HomeComponent> {
       Application.router
           .navigateTo(context, route, transition: transitionType)
           .then((result) {
+            ///回调值
         if (key == "pop-result") {
           Application.router.navigateTo(context, "/demo/func?message=$result");
         }
@@ -242,6 +248,7 @@ class HomeComponentState extends State<HomeComponent> {
       hexCode = "#DFF700";
       message =
           "This screen should have appeared with a crazy custom transition";
+      ///过渡动画
       var transition = (BuildContext context, Animation<double> animation,
           Animation<double> secondaryAnimation, Widget child) {
         return ScaleTransition(
@@ -263,6 +270,7 @@ class HomeComponentState extends State<HomeComponent> {
       Application.router.navigateTo(
           context, "/demo/fixedtrans?message=Hello!&color_hex=#f4424b");
     } else {
+      ///弹出框
       message = "You tapped the function button!";
       Application.router.navigateTo(context, "/demo/func?message=$message");
     }
